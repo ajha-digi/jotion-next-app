@@ -1,5 +1,6 @@
 import { Toaster } from "sonner";
 import { Inter } from 'next/font/google'
+import { GoogleAnalytics } from '@next/third-parties/google'
 import type { Metadata } from 'next'
 
 import { ThemeProvider } from '@/components/providers/theme-provider'
@@ -53,6 +54,7 @@ export default function RootLayout({
             </ThemeProvider>
           </EdgeStoreProvider>
         </ConvexClientProvider>
+        <GoogleAnalytics gaId="G-QWBCHP7M9T" />
       </body>
     </html>
   )
