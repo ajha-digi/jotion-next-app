@@ -3,6 +3,7 @@
 import { useConvexAuth } from "convex/react";
 import { SignInButton, UserButton } from "@clerk/clerk-react";
 import Link from "next/link";
+import { sendGAEvent } from '@next/third-parties/google'
 
 import { useScrollTop } from "@/hooks/use-scroll-top";
 import { ModeToggle } from "@/components/mode-toggle";
@@ -15,6 +16,10 @@ import { Logo } from "./logo";
 export const Navbar = () => {
   const { isAuthenticated, isLoading } = useConvexAuth();
   const scrolled = useScrollTop();
+
+  const handleGaData = () => {
+    sendGAEvent({ event: 'login button licl', value: 'Ajeet jha' })
+  }
 
   return (
     <div className={cn(
@@ -29,7 +34,7 @@ export const Navbar = () => {
         {!isAuthenticated && !isLoading && (
           <>
             <SignInButton mode="modal">
-              <Button variant="ghost" size="sm">
+              <Button variant="ghost" size="sm" onClick={handleGaData}>
                 Log in
               </Button>
             </SignInButton>
